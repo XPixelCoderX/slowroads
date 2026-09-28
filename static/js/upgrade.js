@@ -86,6 +86,9 @@
         <button type="button" role="menuitem" data-menu-asset="config.fa1e0797.svg" data-menu-label="Options">Driving options <span>graphics</span></button>
         <button type="button" role="menuitem" id="sr-quick-audio">Toggle sound <span>sound</span></button>
         <button type="button" role="menuitem" id="sr-quick-auto">Toggle autodrive <span>F</span></button>
+        <button type="button" role="menuitem" id="sr-quick-reset">Reset vehicle <span>R</span></button>
+        <button type="button" role="menuitem" id="sr-quick-camera">Change camera <span>C</span></button>
+        <button type="button" role="menuitem" id="sr-quick-hud">Toggle game HUD <span>U</span></button>
       </div>
       <div class="sr-photo-exit" id="sr-photo-exit">
         <span class="sr-photo-caption">clean frame · take your time</span>
@@ -103,12 +106,79 @@
         </div>
       </div>`;
     document.body.appendChild(layer);
+    const moreButton = document.getElementById("sr-more");
+    moreButton?.setAttribute("aria-haspopup", "menu");
+    moreButton?.setAttribute("aria-expanded", "false");
     bindInterface();
+  }
+
+  function ensureSplashDetails() {
+    const home = document.getElementById("home");
+    if (!home) return;
+
+    // Keep the landing page owned by this build. The bundled game can still
+    // re-render the splash screen while loading, so this is deliberately
+    // idempotent and safe to run during the normal sync pass.
+    document.getElementById("splash-anslo")?.remove();
+    document.querySelectorAll("#donate, #donate-please").forEach((element) => {
+      const footerItem = element.closest(".splash-footer-link");
+      if (footerItem && footerItem.querySelector("a:not(#donate)")) {
+        element.remove();
+      } else {
+        footerItem?.remove();
+        if (!footerItem) element.remove();
+      }
+    });
+
+    let creator = document.getElementById("splash-creator");
+    if (!creator) {
+      creator = document.createElement("div");
+      creator.id = "splash-creator";
+      home.appendChild(creator);
+    }
+    creator.textContent = "made by n2ab";
+    creator.setAttribute("aria-label", "Made by n2ab");
+
+    const footer = document.getElementById("splash-footer");
+    if (footer) {
+      let discord = footer.querySelector("a.splash-link, a[href*='discord']");
+      if (!discord) {
+        const footerItem = document.createElement("div");
+        footerItem.className = "splash-footer-link";
+        discord = document.createElement("a");
+        discord.className = "splash-link";
+        footerItem.appendChild(discord);
+        footer.appendChild(footerItem);
+      }
+      discord.href = "https://discord.pcsmp.net";
+      discord.target = "_blank";
+      discord.rel = "noopener noreferrer";
+      discord.textContent = "discord.pcsmp.net";
+      discord.setAttribute("aria-label", "Join the n2ab Discord community");
+    }
+  }
+
+  function enhanceSplashLoader() {
+    const loader = document.getElementById("splash-loader");
+    if (!loader || loader.dataset.srAccessible === "true") return;
+    loader.dataset.srAccessible = "true";
+    loader.setAttribute("role", "button");
+    loader.setAttribute("tabindex", "0");
+    loader.setAttribute("aria-label", "Begin driving");
+    loader.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        loader.click();
+      }
+    });
   }
 
   function ensureHomeTools() {
     const home = document.getElementById("home");
-    if (!home || document.getElementById("sr-home-tools")) return;
+    if (!home) return;
+    ensureSplashDetails();
+    enhanceSplashLoader();
+    if (document.getElementById("sr-home-tools")) return;
 
     const ribbon = document.createElement("div");
     ribbon.id = "sr-home-tools";
@@ -290,6 +360,9 @@
       Space: [" ", " "],
       KeyP: ["p", "P"],
       KeyF: ["f", "F"],
+      KeyR: ["r", "R"],
+      KeyC: ["c", "C"],
+      KeyU: ["u", "U"],
     };
     const [key, keyCode] = keys[code] || ["", ""];
     try {
@@ -305,6 +378,11 @@
       keyCode: keyCode ? keyCode.charCodeAt(0) : 0,
       which: keyCode ? keyCode.charCodeAt(0) : 0,
     }));
+  }
+
+  function closeQuickMenu() {
+    document.getElementById("sr-quick-menu")?.setAttribute("hidden", "");
+    document.getElementById("sr-more")?.setAttribute("aria-expanded", "false");
   }
 
   function bindInterface() {
@@ -327,15 +405,13 @@
     document.getElementById("sr-audio")?.addEventListener("click", toggleAudio);
     document.getElementById("sr-quick-audio")?.addEventListener("click", () => {
       toggleAudio();
-      document.getElementById("sr-quick-menu")?.setAttribute("hidden", "");
-      document.getElementById("sr-more")?.setAttribute("aria-expanded", "false");
+      closeQuickMenu();
     });
 
     document.querySelectorAll("[data-menu-asset]").forEach((button) => {
       button.addEventListener("click", () => {
         openNativeMenu(button.getAttribute("data-menu-asset"), button.getAttribute("data-menu-label") || "Game");
-        document.getElementById("sr-quick-menu")?.setAttribute("hidden", "");
-        document.getElementById("sr-more")?.setAttribute("aria-expanded", "false");
+        closeQuickMenu();
       });
     });
 
@@ -348,9 +424,20 @@
     });
     document.getElementById("sr-quick-auto")?.addEventListener("click", () => {
       sendGameKey("KeyF");
-      quickMenu?.setAttribute("hidden", "");
-      document.getElementById("sr-more")?.setAttribute("aria-expanded", "false");
+      closeQuickMenu();
       showToast("Autodrive toggled");
+    });
+    const quickKeyActions = [
+      ["sr-quick-reset", "KeyR", "Vehicle reset"],
+      ["sr-quick-camera", "KeyC", "Camera changed"],
+      ["sr-quick-hud", "KeyU", "Game HUD toggled"],
+    ];
+    quickKeyActions.forEach(([id, code, message]) => {
+      document.getElementById(id)?.addEventListener("click", () => {
+        sendGameKey(code);
+        closeQuickMenu();
+        showToast(message);
+      });
     });
     document.addEventListener("pointerdown", (event) => {
       const nativeMenuBar = document.getElementById("menu-bar");
@@ -358,8 +445,13 @@
         closeNativeMenu(event.target);
       }
       if (quickMenu && !quickMenu.contains(event.target) && event.target?.id !== "sr-more") {
-        quickMenu.setAttribute("hidden", "");
-        document.getElementById("sr-more")?.setAttribute("aria-expanded", "false");
+        closeQuickMenu();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeQuickMenu();
+        closeNativeMenu();
       }
     });
 

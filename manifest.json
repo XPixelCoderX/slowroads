@@ -1,7 +1,8 @@
 {
   "short_name": "Slow Roads",
   "name": "Slow Roads — an open road, at your pace",
-  "description": "Endless procedural driving zen. Take the long way, explore new worlds, and just drive.",
+  "description": "A calm, endless procedural driving experience by n2ab. Take the long way, explore new worlds, and just drive.",
+  "author": "n2ab",
   "icons": [
     {
       "src": "favicon_circle.svg",

@@ -19042,13 +19042,7 @@
               q: "How much will it cost?",
               a: Object(Ul.jsxs)(Ul.Fragment, {
                 children: [
-                  "Nothing! And no ads, either... enjoy this as a respite from run-away capitalism. However, keeping the game online relies upon kind ",
-                  Object(Ul.jsx)("a", {
-                    className: "about-link",
-                    href: "https://ko-fi.com/slowroads",
-                    children: "donations",
-                  }),
-                  ", so anything you might be able to contribute would go a long way to supporting it.",
+                  "Nothing! And no ads, either... enjoy this as a respite from run-away capitalism.",
                 ],
               }),
             },
@@ -19060,7 +19054,7 @@
           Xl = [
             {
               title: "1. Project overview (tl;dr for all sections)",
-              link: "https://anslo.medium.com/slow-roads-tl-dr-a664ac6bce40",
+              link: "https://discord.pcsmp.net",
             },
             {
               title:
@@ -19143,7 +19137,7 @@
                   children: [
                     "Please use the feedback form to let me know what you think, or ",
                     Object(Ul.jsx)("a", {
-                      href: "https://discord.gg/s8XPAAj",
+                      href: "https://discord.pcsmp.net",
                       children: "join the discord",
                     }),
                     " and tell me personally!",
@@ -19220,19 +19214,9 @@
                   id: "home",
                   children: [
                     Object(Ul.jsx)("div", { id: "splash-version", children: Ui }),
-                    Object(Ul.jsxs)("a", {
-                      id: "splash-anslo",
-                      href: "https://twitter.com/anslogen",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      children: [
-                        Object(Ul.jsx)("img", {
-                          src: Ql,
-                          id: "splash-anslo-img",
-                          alt: "",
-                        }),
-                        Object(Ul.jsx)("div", { children: "from anslo.dev" }),
-                      ],
+                    Object(Ul.jsx)("div", {
+                      id: "splash-creator",
+                      children: "made by n2ab",
                     }),
                     Object(Ul.jsx)("div", { id: "splash-logo-placeholder" }),
                     Object(Ul.jsx)("img", {
@@ -19263,32 +19247,15 @@
                     Object(Ul.jsxs)("div", {
                       id: "splash-footer",
                       children: [
-                        Object(Ul.jsxs)("div", {
-                          className: "splash-footer-link",
-                          children: [
-                            Object(Ul.jsx)("div", {
-                              id: "donate-please",
-                              children: "donations keep the game running!",
-                            }),
-                            Object(Ul.jsxs)("a", {
-                              id: "donate",
-                              href: "https://ko-fi.com/slowroads",
-                              target: "_blank",
-                              rel: "noopener noreferrer",
-                              children: [
-                                "donate",
-                                Object(Ul.jsx)("span", { className: "outlink" }),
-                              ],
-                            }),
-                          ],
-                        }),
                         Object(Ul.jsx)("div", {
                           className: "splash-footer-link",
                           children: Object(Ul.jsxs)("a", {
                             className: "splash-link",
-                            href: "https://discord.gg/s8XPAAj",
+                            href: "https://discord.pcsmp.net",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
                             children: [
-                              "discord",
+                              "discord.pcsmp.net",
                               Object(Ul.jsx)("span", { className: "outlink" }),
                             ],
                           }),
@@ -19369,13 +19336,9 @@
                             Object(Ul.jsxs)("div", {
                               className: "splash-about-text",
                               children: [
-                                "My name is ",
-                                Object(Ul.jsx)("a", {
-                                  className: "about-link",
-                                  href: "https://anslo.dev",
-                                  children: "anslo",
-                                }),
-                                " and I'm a creative developer exploring in the space between design and computer science. With a background in software engineering and a life-long love of functional art, my projects focus on finding novel applications of digital technology in answering interesting design questions.",
+                                "This build is maintained by ",
+                                Object(Ul.jsx)("strong", { children: "n2ab" }),
+                                ", with a focus on making a calm, welcoming driving experience that feels good to use on every screen.",
                                 Object(Ul.jsx)("br", {}),
                                 Object(Ul.jsx)("br", {}),
                                 "Slow Roads exists primarily as an exploration of procedural scenery generation, but also as an experiment testing the boundaries of 3D application development within JavaScript. As a game, this project is a nostalgic love letter to the rolling hills of the Peak District, and to the arcade rally games I would play for hours on end as a child. As a technical demo, I aim to set a high bar and redress the negative idea of what can be accomplished in the browser.",
@@ -19401,15 +19364,7 @@
                               "After 16 months of full-time development, the initial goals for this project have been fulfilled, and so I'm considering it to be complete. That said, there are many features which didn't make the priority list for version 1. If there is interest, I would love to continue developing these features into the future.",
                               Object(Ul.jsx)("br", {}),
                               Object(Ul.jsx)("br", {}),
-                              "I'm committed to keeping Slow Roads freely available and free from adverts, but I don't have the financial capacity to keep the servers running by myself. If you would like to keep the game alive, a kind ",
-                              Object(Ul.jsx)("a", {
-                                className: "about-link",
-                                href: "https://ko-fi.com/slowroads",
-                                target: "_blank",
-                                rel: "noopener noreferrer",
-                                children: "donation",
-                              }),
-                              " would be greatly appreciated. Let me know which of the features below you would like to see most!",
+                              "Slow Roads is kept free to play and free from adverts. Let me know which of the features below you would like to see most!",
                               Object(Ul.jsx)("br", {}),
                               Object(Ul.jsx)("br", {}),
                               Object(Ul.jsx)("div", {
@@ -19442,16 +19397,12 @@
                               "Join the ",
                               Object(Ul.jsx)("a", {
                                 className: "about-link",
-                                href: "https://discord.gg/t2UWVKcy3z",
+                                href: "https://discord.pcsmp.net",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
                                 children: "discord server",
                               }),
-                              " to suggest new ideas. Supporters on ",
-                              Object(Ul.jsx)("a", {
-                                className: "about-link",
-                                href: "https://ko-fi.com/slowroads",
-                                children: "ko-fi",
-                              }),
-                              " get early access and priority requests!",
+                              " to suggest new ideas and share feedback.",
                             ],
                           }),
                         }),
@@ -19467,19 +19418,15 @@
                           children: Object(Ul.jsxs)("div", {
                             className: "splash-about-text",
                             children: [
-                              "While I have no immediate plans to make the source code public, over the next few weeks I will be writing blog posts diving into each of the main components. If you're curious, please follow me on ",
+                              "Share feedback and get updates in the ",
                               Object(Ul.jsx)("a", {
                                 className: "about-link",
-                                href: "https://twitter.com/anslogen",
-                                children: "Twitter",
+                                href: "https://discord.pcsmp.net",
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                                children: "Discord",
                               }),
-                              " or ",
-                              Object(Ul.jsx)("a", {
-                                className: "about-link",
-                                href: "https://anslo.medium.com/",
-                                children: "Medium",
-                              }),
-                              " to be notified of new posts.",
+                              " community.",
                               Object(Ul.jsx)("br", {}),
                               Object(Ul.jsx)("br", {}),
                               Object(Ul.jsx)("div", {
@@ -20382,7 +20329,6 @@
             Object(Ul.jsxs)("div", {
               id: "menu-bar-right",
               children: [
-                Object(Ul.jsx)(ic, {}),
                 Object(Ul.jsx)(sc, {}),
                 Object(Ul.jsx)(Bd, {}),
                 Object(Ul.jsx)(tc, {}),
@@ -20646,7 +20592,7 @@
                             "You can also join the ",
                             Object(Ul.jsx)("a", {
                               className: "feedback-link",
-                              href: "https://discord.gg/s8XPAAj",
+                              href: "https://discord.pcsmp.net",
                               children: "discord",
                             }),
                             " to talk to me directly.",
@@ -20726,36 +20672,6 @@
               })
             );
           },
-          ic = () =>
-            Object(Ul.jsxs)("a", {
-              href: "https://ko-fi.com/slowroads",
-              target: "_blank",
-              rel: "noreferrer",
-              title: "Support development on Ko-fi!",
-              className: "menu-item",
-              style: {
-                padding: "0px 12px",
-                width: "auto",
-                textAlign: "right",
-                display: "flex",
-              },
-              children: [
-                Object(Ul.jsx)("img", {
-                  alt: "",
-                  style: {
-                    height: "50%",
-                    marginTop: "25px",
-                    marginRight: "8px",
-                    transform: "translateY(-50%)",
-                  },
-                  src: Sd,
-                }),
-                Object(Ul.jsx)("div", {
-                  style: { fontSize: "14px", color: "#fff" },
-                  children: "donate",
-                }),
-              ],
-            }),
           sc = () => {
             const [e, t] = Object(s.useState)(jr.value.input),
               [i, a] = Object(s.useState)(1);

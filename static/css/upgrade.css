@@ -1662,3 +1662,145 @@ body.sr-photo-mode #sr-photo-exit * {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Final polish and layering fixes. The native road preview is decorative, so
+   it must never become a hit-area over the driving controls. */
+#upcoming-container {
+  bottom: clamp(94px, 13vh, 136px) !important;
+  width: min(300px, 34vw) !important;
+  height: clamp(100px, 16vh, 170px) !important;
+  padding-bottom: 0 !important;
+  z-index: 110 !important;
+  pointer-events: none !important;
+}
+
+#upcoming-container svg,
+#upcoming-container * {
+  pointer-events: none !important;
+}
+
+#upcoming-container svg {
+  display: block;
+  opacity: 0.8;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.14));
+}
+
+/* The old attribution and funding CTA are intentionally not part of this
+   edition. Keep these guards for cached/older React markup during hot loads. */
+#splash-anslo,
+#donate,
+#donate-please {
+  display: none !important;
+}
+
+#splash-creator {
+  position: absolute;
+  z-index: 12;
+  bottom: 28px;
+  left: clamp(28px, 10.2vw, 168px);
+  color: rgba(245, 241, 231, 0.68);
+  font-family: ShareTech, monospace;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#splash-creator::before {
+  content: "✦";
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--sr-accent);
+  font-size: 9px;
+}
+
+#splash-footer {
+  z-index: 12;
+  bottom: 28px;
+}
+
+#splash-footer .splash-link {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid rgba(245, 241, 231, 0.18);
+  border-radius: 999px;
+  background: rgba(19, 27, 22, 0.24);
+  color: rgba(245, 241, 231, 0.78) !important;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+#splash-footer .splash-link::before {
+  content: "↗";
+  color: var(--sr-accent);
+  font-family: sans-serif;
+  font-size: 13px;
+}
+
+#splash-footer .splash-link:hover {
+  border-color: rgba(245, 241, 231, 0.42);
+  background: rgba(245, 241, 231, 0.12);
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+#splash-loader {
+  cursor: pointer;
+}
+
+#splash-loader:focus-visible {
+  outline: 2px solid var(--sr-accent) !important;
+  outline-offset: 5px;
+}
+
+@media (pointer: coarse), (max-width: 700px) {
+  #upcoming-container {
+    bottom: calc(150px + env(safe-area-inset-bottom)) !important;
+    width: min(200px, 48vw) !important;
+    height: 112px !important;
+  }
+
+  #splash-creator {
+    bottom: 16px;
+    left: 25px;
+    font-size: 8px;
+  }
+
+  #splash-footer {
+    right: 25px;
+    bottom: 12px;
+    left: auto;
+    transform: none;
+    gap: 0;
+  }
+
+  #splash-footer .splash-footer-link {
+    display: block;
+  }
+
+  #splash-footer .splash-link {
+    min-height: 30px;
+    padding: 0 9px;
+    font-size: 8px !important;
+    letter-spacing: 0.08em !important;
+  }
+}
+
+@media (max-width: 420px) {
+  #splash-creator::before {
+    margin-right: 5px;
+  }
+
+  #splash-creator {
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #splash-footer {
+    right: 16px;
+  }
+}
