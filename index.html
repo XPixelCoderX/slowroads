@@ -3,32 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="./favicon_circle.svg" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
-    <title>
-      s&#8202;l&#8202;o&#8202;w&nbsp;&nbsp;r&#8202;o&#8202;a&#8202;d&#8202;s
-    </title>
-    <meta name="title" content="s l o w  r o a d s" />
-    <meta name="description" content="endless driving zen in your browser" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#141a17" />
+    <title>Slow Roads — an open road, at your pace</title>
+    <meta name="title" content="Slow Roads — an open road, at your pace" />
+    <meta name="description" content="Endless procedural driving zen. Take the long way, explore new worlds, and just drive." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://slowroads.io/" />
-    <meta property="og:title" content="s l o w  r o a d s" />
+    <meta property="og:title" content="Slow Roads — an open road, at your pace" />
     <meta
       property="og:description"
-      content="endless driving zen in your browser"
+      content="Endless procedural driving zen. Take the long way, explore new worlds, and just drive."
     />
     <meta property="og:image" content="./img.jpg" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://slowroads.io/" />
-    <meta property="twitter:title" content="s l o w  r o a d s" />
+    <meta property="twitter:title" content="Slow Roads — an open road, at your pace" />
     <meta
       property="twitter:description"
-      content="endless driving zen in your browser"
+      content="Endless procedural driving zen. Take the long way, explore new worlds, and just drive."
     />
     <meta property="twitter:image" content="./img.jpg" />
     <link rel="manifest" href="./manifest.json" />
     <script src="./alea.min.js"></script>
     <link href="./static/css/main.a473f648.chunk.css" rel="stylesheet" />
+    <link href="./static/css/upgrade.css" rel="stylesheet" />
+    <script>
+      // Allow the enhanced touch controls to serve mobile browsers before the
+      // legacy bundle performs its hardware-keyboard support check.
+      try {
+        const touchCapable =
+          (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
+          ("ontouchstart" in window && navigator.maxTouchPoints > 0);
+        if (touchCapable) {
+          localStorage.setItem("force-allow-mobile", "touch-controls");
+          // Touch buttons emit the game's existing keyboard control codes.
+          localStorage.setItem("config-vehicle-input", "0");
+        }
+      } catch (_) {}
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -184,5 +197,6 @@
     </script>
     <script src="./static/js/2.f5fa8177.chunk.js"></script>
     <script src="./static/js/main.e7a33c55.chunk.js"></script>
+    <script src="./static/js/upgrade.js"></script>
   </body>
 </html>

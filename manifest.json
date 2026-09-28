@@ -1,6 +1,7 @@
 {
-  "short_name": "slowroads",
-  "name": "Slow Roads",
+  "short_name": "Slow Roads",
+  "name": "Slow Roads — an open road, at your pace",
+  "description": "Endless procedural driving zen. Take the long way, explore new worlds, and just drive.",
   "icons": [
     {
       "src": "favicon_circle.svg",
@@ -9,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#141a17",
+  "background_color": "#141a17"
 }
